@@ -1,0 +1,23 @@
+	<div >
+		<%= form_for court do |f| %>				
+			
+			<div class="question">								
+				<%= f.label :name %>
+				<%= f.text_field :name  %>																
+			</div>
+			<div class="question">								
+				<%= f.label :latitude %>
+				<%= f.text_field :latitude  %>																
+			</div>
+			<div class="question">								
+				<%= f.label :longitude %>
+				<%= f.text_field :longitude  %>																
+			</div>
+					
+			<div class="question">	
+				<%= f.submit (defined?(editing) ? "Update Court" : "Create Court") %>			
+			</div>
+			<%= link_to "Back", :back %>
+		</div>
+		<% end %>
+	</div>	

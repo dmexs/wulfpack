@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  resources :howls
-  resource  :courts
-  resource  :users
+
+  resources  :howls
+  resources  :courts
+  resources  :users
 
   root to:'home#index'
 
