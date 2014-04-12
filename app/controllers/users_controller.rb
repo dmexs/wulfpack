@@ -1,14 +1,12 @@
 class UsersController < ApplicationController
   def new
-
   
-    logger.debug device_params
+  deviceId = "APA91bHq6N6zSUvF1u6dR2taCNRlrhEM-QDCi1pfoGlWuPwYJuZuADLsZtbad0yZuln9AYeI78NHpVXZgsJP6BlSwolnZqfDIsnU1anoIXbONaL-5ivKP6tAR7GbO0s-8tfRRSktoD8tkmC5SriRv1L6EMAjoTuICQ
+"
  	  if device_params
   		deviceId = device_params
   	end
 
-    deviceId = "APA91bHq6N6zSUvF1u6dR2taCNRlrhEM-QDCi1pfoGlWuPwYJuZuADLsZtbad0yZuln9AYeI78NHpVXZgsJP6BlSwolnZqfDIsnU1anoIXbONaL-5ivKP6tAR7GbO0s-8tfRRSktoD8tkmC5SriRv1L6EMAjoTuICQ
-"
   	@user = User.new(:deviceId => deviceId.to_s)
   	if @user.save  		
   		session[:current_user]= @user.id  	   		
