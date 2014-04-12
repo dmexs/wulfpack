@@ -4,8 +4,7 @@ require 'pushmeup'
 class HowlsController < ApplicationController
   
   def new
-  		deviceId = 'APA91bHq6N6zSUvF1u6dR2taCNRlrhEM-QDCi1pfoGlWuPwYJuZuADLsZtbad0yZuln9AYeI78NHpVXZgsJP6BlSwolnZqfDIsnU1anoIXbONaL-5ivKP6tAR7GbO0s-8tfRRSktoD8tkmC5SriRv1L6EMAjoTuICQ
-'
+  		deviceId = current_user.deviceId
 
 	  	GCM.host = 'https://android.googleapis.com/gcm/send'
 	    # https://android.googleapis.com/gcm/send is default
@@ -19,7 +18,7 @@ class HowlsController < ApplicationController
 	  	destination = [deviceId]
 	    # can be an string or an array of strings containing the regIds of the devices you want to send
 
-		data = {:message => "wulfpack message --- hawwoooooo", :msgcnt => "1"}
+		data = {:message => "wulfpack message --- hawwoooooo"}
 
 	    #data = {:key => "value", :key2 => ["array", "value"]}
 	    # must be an hash with all values you want inside you notification
