@@ -5,10 +5,18 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= auto_discovery_link_tag :rss %> 
+  <%= yield :head %>
 </head>
-<body>
-
-<%= yield %>
+<body id='<%=params[:controller]%>'>
+<div class="container">
+  <% flash.each do |key, value| %>
+        <%= content_tag(:div, value.html_safe, class: "alert alert-#{key}") %>
+  <% end %>
+ 
+  <%= yield %>
+</div>
+ <%= yield :foot %>
 
 </body>
 </html>
