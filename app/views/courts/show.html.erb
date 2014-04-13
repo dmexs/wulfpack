@@ -1,2 +1,6 @@
-<h1>Courts#show</h1>
-<p>Find me in app/views/courts/show.html.erb</p>
+<h1>Territory</h1>
+<p><%= @court.name %></p>
+
+<div >	
+	<%= link_to "Howl", new_howl_path(:id=> @court.id) %>
+</div>	

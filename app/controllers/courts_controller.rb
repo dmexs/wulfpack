@@ -4,13 +4,17 @@ class CourtsController < ApplicationController
 	end
 
   	def show
-		@court = Court.find(court_id_params)
+		@court = Court.find_by_id(params[:id])
+	end
+
+	def edit
+		@court = Court.find_by_id(params[:id])
 	end
 
 	def new
 		@court = Court.new
 	end
-
+	
 	def create
 		@court = Court.new(court_params)
 
@@ -29,9 +33,7 @@ class CourtsController < ApplicationController
 
 	private
 		def court_params
-			params.permit(:id, :name, :longitude, :latitude)
+			params.require(:court).permit(:id, :name, :longitude, :latitude)
 		end
-	 	def court_id_param
-	      params.permit(:id)
-		end
+	 	
 end

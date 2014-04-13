@@ -1,8 +1,11 @@
 <% provide(:title, 'WulfPack') %>
 Welcome <%= current_user.id %>
 <div class="howl">
- <%= link_to "Howl", new_howl_path %>
+ <%= link_to "Howl", howls_path %>
 <div>
 <div class="court">
- <%= link_to "Create Court", new_court_path %>
+ <%= link_to "Territories", courts_path %>
+<div>
+<div class="court">
+ <%= link_to "Create Territory", new_court_path %>
 <div>

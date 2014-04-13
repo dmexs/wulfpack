@@ -1,0 +1,8 @@
+<h1>All Howls</h1>
+<ul class="howls">
+	<% @howls.each do |howl| %>
+	  <li> 
+	    <%= "Howl sent to #{howl.court.name} at #{howl.created_at}" %>          	
+	  </li>
+	<% end %>
+</ul>

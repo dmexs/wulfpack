@@ -1,0 +1,15 @@
+<%= form_for howl do |f| %>						
+		<div class="question">								
+			<%= f.label :user_id %>
+			<%= f.text_field :user_id, :value => current_user.id  %>												
+		</div>
+		<div class="question">								
+			<%= f.label :court_id %>
+			<%= f.text_field :court_id, :value => params[:id]%>														
+		</div>
+		<div class="question">	
+			<%= f.submit "Howl" %>			
+		</div>
+			<%= link_to "Back", :back %>
+		</div>
+	<% end %>

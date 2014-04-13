@@ -2,8 +2,34 @@ require 'rubygems'
 require 'pushmeup'
 
 class HowlsController < ApplicationController
+
+	def index
+		@howls = Howl.all.where('user_id = ? and created_at > ?', current_user.id, 60.minutes.ago)
+	end
+
+	def new
+		@howl = Howl.new
+	end
+
+	def create
+		@howl = Howl.new(howl_params)
+
+		if @howl.save		
+			submit	
+	        respond_to do |format|
+	  			format.html {  redirect_to howls_path @howl }			
+	  			format.json { render :json => @howl }
+	    	end	
+		else			
+			respond_to do |format|
+	  			format.html {  redirect_to howls_path @howl }			
+	  			format.json { render :json => {status:'error while saving howl info'}.to_json}
+	    	end	
+		end
+	end
   
-  def new
+  private 
+  	def submit
   		deviceId = current_user.deviceId
 
 	  	GCM.host = 'https://android.googleapis.com/gcm/send'
@@ -31,5 +57,10 @@ class HowlsController < ApplicationController
 
 	    GCM.send_notification( destination, data, :collapse_key => "placar_score_global", :time_to_live => 3600, :delay_while_idle => false )
 	    # Notification with custom information and parameters  	
-  end
+  	end
+
+
+  	def howl_params
+  		params.require(:howl).permit(:court_id, :user_id)
+  	end
 end
